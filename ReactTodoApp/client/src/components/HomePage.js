@@ -34,18 +34,18 @@ var Home = React.createClass({
 						</select>
 						<br />
 						<select className="form-control" id="select">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
+						<option>Psycho-educational</option>
+						<option>Validation</option>
+						<option>Rating anxiety/mood diary</option>
+						<option>Behavioral planning</option>
+						<option>Cognitive coping statements</option>
 						</select>
-						<br />
+						
 						<div className="form-group">
 					<label for="textArea" className="col-lg-2 control-label">Notes</label>
 					<div className="col-lg-10">
 						<textarea className="form-control" rows="3" id="textArea"></textarea>
-						<span className="help-block"></span>
+						
 					</div>
 					</div>
 					</div>
@@ -53,8 +53,11 @@ var Home = React.createClass({
 					<div className="form-group">
 					<div className="col-lg-10 col-lg-offset-2">
 						<button type="reset" className="btn btn-danger">Cancel</button>
-						
+					<div className="form-group">
+						<div className="col-lg-10 col-lg-offset-2">	
 						<button type="submit" className="btn btn-primary">Submit</button>
+					</div>
+					</div>
 					</div>
 					</div>
 				</fieldset>
