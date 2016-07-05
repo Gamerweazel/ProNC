@@ -84,9 +84,9 @@ var Home = React.createClass({displayName: "Home",
 						React.createElement("option", null, "Behavioral planning"), 
 						React.createElement("option", null, "Cognitive coping statements")
 						), 
-						
-						React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Notes"), 
+						React.createElement("br", null), 
+					React.createElement("div", {className: "form-group"}, 
+						React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Notes"), 
 					React.createElement("div", {className: "col-lg-10"}, 
 						React.createElement("textarea", {className: "form-control", rows: "3", id: "textArea"})
 						
@@ -97,11 +97,7 @@ var Home = React.createClass({displayName: "Home",
 					React.createElement("div", {className: "form-group"}, 
 					React.createElement("div", {className: "col-lg-10 col-lg-offset-2"}, 
 						React.createElement("button", {type: "reset", className: "btn btn-danger"}, "Cancel"), 
-					React.createElement("div", {className: "form-group"}, 
-						React.createElement("div", {className: "col-lg-10 col-lg-offset-2"}, 	
 						React.createElement("button", {type: "submit", className: "btn btn-primary"}, "Submit")
-					)
-					)
 					)
 					)
 				)
@@ -156,8 +152,8 @@ var Header = React.createClass({displayName: "Header",
 					React.createElement(Link, {to: "/", className: "navbar-brand"}, "Todo App"), 
 					React.createElement("ul", {className: "nav navbar-nav"}, 
 						React.createElement("li", null, React.createElement(Link, {to: "/"}, "Home")), 
-						React.createElement("li", null, React.createElement(Link, {to: "/about"}, "About")), 
-						React.createElement("li", null, React.createElement(Link, {to: "/todos"}, "Todos")), 
+						React.createElement("li", null, React.createElement(Link, {to: "/about-page"}, "About")), 
+						React.createElement("li", null, React.createElement(Link, {to: "/todos-page"}, "Todos")), 
 						React.createElement("li", null, React.createElement(Link, {to: "/manage-todo"}, "Add todo"))
 					)
 				)
@@ -211,7 +207,7 @@ var TodoForm = require('./TodoForm');
 var TodoActionCreator = require('../../actions/todoActionCreator');
 var todoApi = require('../../mockApi/todoApi');
 var toastr = require('toastr');
-var hashHistory = require('react-router').hashHistory;
+var browserHistory = require('react-router').browserHistory;
 
 var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 
@@ -251,7 +247,7 @@ var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 		// todoApi.saveTodo(this.state.todo);
 		
 		toastr.success('Todo saved!');
-		hashHistory.push('/todos');
+		browserHistory.push('/todos-page');
 
 	},
 
@@ -562,8 +558,8 @@ var ManageTodoPage = require('./components/todos/ManageTodoPage');
 var routes = (
 	React.createElement(Route, {path: "/", component: App}, 
 		React.createElement(IndexRoute, {component: HomePage}), 
-		React.createElement(Route, {path: "/about", component: AboutPage}), 
-		React.createElement(Route, {path: "/todos", component: TodoPage}), 
+		React.createElement(Route, {path: "/about-page", component: AboutPage}), 
+		React.createElement(Route, {path: "/todos-page", component: TodoPage}), 
 		React.createElement(Route, {path: "/manage-todo", component: ManageTodoPage})
 	)
 );

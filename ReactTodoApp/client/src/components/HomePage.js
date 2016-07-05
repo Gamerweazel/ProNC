@@ -40,9 +40,9 @@ var Home = React.createClass({
 						<option>Behavioral planning</option>
 						<option>Cognitive coping statements</option>
 						</select>
-						
-						<div className="form-group">
-					<label for="textArea" className="col-lg-2 control-label">Notes</label>
+						<br />
+					<div className="form-group">
+						<label for="textArea" className="col-lg-2 control-label">Notes</label>
 					<div className="col-lg-10">
 						<textarea className="form-control" rows="3" id="textArea"></textarea>
 						
@@ -53,11 +53,7 @@ var Home = React.createClass({
 					<div className="form-group">
 					<div className="col-lg-10 col-lg-offset-2">
 						<button type="reset" className="btn btn-danger">Cancel</button>
-					<div className="form-group">
-						<div className="col-lg-10 col-lg-offset-2">	
 						<button type="submit" className="btn btn-primary">Submit</button>
-					</div>
-					</div>
 					</div>
 					</div>
 				</fieldset>
