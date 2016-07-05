@@ -8,25 +8,25 @@ var skipper = require('skipper')
 
 mongoose.connect('mongodb://localhost/ReactTodoApp')
 
-require('./config/passport')
+// require('./config/passport')
 
 // Configure Express
 
 var app = express()
 
 app.use(morgan('dev'))
-app.use(passport.initialize())
+// app.use(passport.initialize())
 app.use(skipper())
 
-app.use('/todos', require('./todo/routes'))
-app.use('/users', require('./user/routes'))
+app.use('/todos', require('./server/todo/routes'))
+app.use('/users', require('./server/user/routes'))
 
 app.all('/', function (req, res)
 {
 	res.end('You have made it to day 2!')
 })
 
-app.listen(8062, function ()
+app.listen(9005, function ()
 {
-	console.log('Listening on localhost:8062')
+	console.log('Listening on localhost:9005')
 })
