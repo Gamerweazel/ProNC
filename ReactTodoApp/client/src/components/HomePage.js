@@ -41,14 +41,13 @@ var Home = React.createClass({
 						<option>Cognitive coping statements</option>
 						</select>
 						<br />
-					<div className="form-group">
-						<label for="textArea" className="col-lg-2 control-label">Notes</label>
-					<div className="col-lg-10">
-						<textarea className="form-control" rows="3" id="textArea"></textarea>
-						
-					</div>
-					</div>
-					</div>
+					<div class="form-group">
+      					<label for="textArea" className="col-lg-2 control-label">Textarea</label>
+      					<div class="col-lg-10">
+       					 <textarea class="form-control" rows="3" id="textArea"></textarea>
+						</div>
+      				</div>
+    				</div>
 					</div>
 					<div className="form-group">
 					<div className="col-lg-10 col-lg-offset-2">

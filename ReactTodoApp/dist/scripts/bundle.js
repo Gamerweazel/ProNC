@@ -85,14 +85,13 @@ var Home = React.createClass({displayName: "Home",
 						React.createElement("option", null, "Cognitive coping statements")
 						), 
 						React.createElement("br", null), 
-					React.createElement("div", {className: "form-group"}, 
-						React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Notes"), 
-					React.createElement("div", {className: "col-lg-10"}, 
-						React.createElement("textarea", {className: "form-control", rows: "3", id: "textArea"})
-						
-					)
-					)
-					)
+					React.createElement("div", {class: "form-group"}, 
+      					React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Textarea"), 
+      					React.createElement("div", {class: "col-lg-10"}, 
+       					 React.createElement("textarea", {class: "form-control", rows: "3", id: "textArea"})
+						)
+      				)
+    				)
 					), 
 					React.createElement("div", {className: "form-group"}, 
 					React.createElement("div", {className: "col-lg-10 col-lg-offset-2"}, 
