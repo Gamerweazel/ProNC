@@ -52966,49 +52966,28 @@ var Home = React.createClass({displayName: "Home",
 				React.createElement("fieldset", null, 
 					React.createElement("legend", null, "New Diagnostic Profile"), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "inputName", className: "col-lg-2 control-label"}, "Name"), 
+					React.createElement("label", {for: "inputFName", className: "col-lg-2 control-label"}, "First Name"), 
 					React.createElement("div", {className: "col-lg-10"}, 
-						React.createElement("input", {type: "text", className: "form-control", id: "inputName", placeholder: "Full Name"})
+						React.createElement("input", {type: "text", className: "form-control", id: "inputFName", placeholder: "First Name"})
 					)
 					), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "inputPassword", className: "col-lg-2 control-label"}, "Password"), 
+					React.createElement("label", {for: "inputLName", className: "col-lg-2 control-label"}, "Last Name"), 
 					React.createElement("div", {className: "col-lg-10"}, 
-						React.createElement("input", {type: "password", className: "form-control", id: "inputPassword", placeholder: "Password"}), 
-						React.createElement("div", {className: "checkbox"}, 
-						React.createElement("label", null, 
-							React.createElement("input", {type: "checkbox"}), " Checkbox"
-						)
-						)
+						React.createElement("input", {type: "text", className: "form-control", id: "inputLName", placeholder: "Last Name"})
 					)
 					), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Textarea"), 
+					React.createElement("label", {for: "select", className: "col-lg-2 control-label"}, "Diagnosis"), 
 					React.createElement("div", {className: "col-lg-10"}, 
-						React.createElement("textarea", {className: "form-control", rows: "3", id: "textArea"}), 
-						React.createElement("span", {className: "help-block"}, "A longer block of help text that breaks onto a new line and may extend beyond one line.")
-					)
-					), 
-					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {className: "col-lg-2 control-label"}, "Radios"), 
-					React.createElement("div", {className: "col-lg-10"}, 
-						React.createElement("div", {className: "radio"}, 
-						React.createElement("label", null, 
-							React.createElement("input", {type: "radio", name: "optionsRadios", id: "optionsRadios1", value: "option1", checked: ""}), 
-							"Option one is this"
-						)
+					React.createElement("select", {multiple: "", className: "form-control"}, 
+						React.createElement("option", null, "Anxiety"), 
+						React.createElement("option", null, "Bipolar Disorder"), 
+						React.createElement("option", null, "Depression"), 
+						React.createElement("option", null, "Schizophrenia"), 
+						React.createElement("option", null, "Eating Disorder")
 						), 
-						React.createElement("div", {className: "radio"}, 
-						React.createElement("label", null, 
-							React.createElement("input", {type: "radio", name: "optionsRadios", id: "optionsRadios2", value: "option2"}), 
-							"Option two can be something else"
-						)
-						)
-					)
-					), 
-					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "select", className: "col-lg-2 control-label"}, "Selects"), 
-					React.createElement("div", {className: "col-lg-10"}, 
+						React.createElement("br", null), 
 						React.createElement("select", {className: "form-control", id: "select"}, 
 						React.createElement("option", null, "1"), 
 						React.createElement("option", null, "2"), 
@@ -53017,13 +52996,13 @@ var Home = React.createClass({displayName: "Home",
 						React.createElement("option", null, "5")
 						), 
 						React.createElement("br", null), 
-						React.createElement("select", {multiple: "", className: "form-control"}, 
-						React.createElement("option", null, "1"), 
-						React.createElement("option", null, "2"), 
-						React.createElement("option", null, "3"), 
-						React.createElement("option", null, "4"), 
-						React.createElement("option", null, "5")
-						)
+						React.createElement("div", {className: "form-group"}, 
+					React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Notes"), 
+					React.createElement("div", {className: "col-lg-10"}, 
+						React.createElement("textarea", {className: "form-control", rows: "3", id: "textArea"}), 
+						React.createElement("span", {className: "help-block"})
+					)
+					)
 					)
 					), 
 					React.createElement("div", {className: "form-group"}, 

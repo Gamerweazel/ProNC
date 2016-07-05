@@ -11,49 +11,28 @@ var Home = React.createClass({
 				<fieldset>
 					<legend>New Diagnostic Profile</legend>
 					<div className="form-group">
-					<label for="inputName" className="col-lg-2 control-label">Name</label>
+					<label for="inputFName" className="col-lg-2 control-label">First Name</label>
 					<div className="col-lg-10">
-						<input type="text" className="form-control" id="inputName" placeholder="Full Name" />
+						<input type="text" className="form-control" id="inputFName" placeholder="First Name" />
 					</div>
 					</div>
 					<div className="form-group">
-					<label for="inputPassword" className="col-lg-2 control-label">Password</label>
+					<label for="inputLName" className="col-lg-2 control-label">Last Name</label>
 					<div className="col-lg-10">
-						<input type="password" className="form-control" id="inputPassword" placeholder="Password" />
-						<div className="checkbox">
-						<label>
-							<input type="checkbox" /> Checkbox
-						</label>
-						</div>
+						<input type="text" className="form-control" id="inputLName" placeholder="Last Name" />
 					</div>
 					</div>
 					<div className="form-group">
-					<label for="textArea" className="col-lg-2 control-label">Textarea</label>
+					<label for="select" className="col-lg-2 control-label">Diagnosis</label>
 					<div className="col-lg-10">
-						<textarea className="form-control" rows="3" id="textArea"></textarea>
-						<span className="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-					</div>
-					</div>
-					<div className="form-group">
-					<label className="col-lg-2 control-label">Radios</label>
-					<div className="col-lg-10">
-						<div className="radio">
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="" />
-							Option one is this
-						</label>
-						</div>
-						<div className="radio">
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-							Option two can be something else
-						</label>
-						</div>
-					</div>
-					</div>
-					<div className="form-group">
-					<label for="select" className="col-lg-2 control-label">Selects</label>
-					<div className="col-lg-10">
+					<select multiple="" className="form-control">
+						<option>Anxiety</option>
+						<option>Bipolar Disorder</option>
+						<option>Depression</option>
+						<option>Schizophrenia</option>
+						<option>Eating Disorder</option>
+						</select>
+						<br />
 						<select className="form-control" id="select">
 						<option>1</option>
 						<option>2</option>
@@ -62,13 +41,13 @@ var Home = React.createClass({
 						<option>5</option>
 						</select>
 						<br />
-						<select multiple="" className="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						</select>
+						<div className="form-group">
+					<label for="textArea" className="col-lg-2 control-label">Notes</label>
+					<div className="col-lg-10">
+						<textarea className="form-control" rows="3" id="textArea"></textarea>
+						<span className="help-block"></span>
+					</div>
+					</div>
 					</div>
 					</div>
 					<div className="form-group">
