@@ -13,6 +13,7 @@ var Router =  require("react-router");
 var routes = require("./app/routes");
 var mongoose = require("mongoose");
 var Character = require("./models/character");
+var config = require("./config");
 
 var app = express();
 
