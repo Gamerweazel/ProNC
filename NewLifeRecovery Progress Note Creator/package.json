@@ -8,6 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
+    "postinstall": "bower install && gulp build",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
