@@ -8,6 +8,8 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var Router =  require("react-router");
 var routes = require("./app/routes");
+var mongoose = require("mongoose");
+var Character = require("./models/character");
 
 var app = express();
 
@@ -31,6 +33,12 @@ app.use(function(req, res) {
     }
   });
 });
+
+mongoose.connect(config.database);
+mongoose.connection.on("error", function(){
+  console.info("Error: could not connect to MongoDB");
+});
+
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
