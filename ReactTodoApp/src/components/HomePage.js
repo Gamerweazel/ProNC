@@ -9,11 +9,11 @@ var Home = React.createClass({
 			<div className="jumbotron">
 				<form className="form-horizontal">
 				<fieldset>
-					<legend>Legend</legend>
+					<legend>New Diagnostic Profile</legend>
 					<div className="form-group">
-					<label for="inputEmail" className="col-lg-2 control-label">Email</label>
+					<label for="inputName" className="col-lg-2 control-label">Name</label>
 					<div className="col-lg-10">
-						<input type="text" className="form-control" id="inputEmail" placeholder="Email" />
+						<input type="text" className="form-control" id="inputName" placeholder="Full Name" />
 					</div>
 					</div>
 					<div className="form-group">

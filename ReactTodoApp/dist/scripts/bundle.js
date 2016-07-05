@@ -52964,11 +52964,11 @@ var Home = React.createClass({displayName: "Home",
 			React.createElement("div", {className: "jumbotron"}, 
 				React.createElement("form", {className: "form-horizontal"}, 
 				React.createElement("fieldset", null, 
-					React.createElement("legend", null, "Legend"), 
+					React.createElement("legend", null, "New Diagnostic Profile"), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "inputEmail", className: "col-lg-2 control-label"}, "Email"), 
+					React.createElement("label", {for: "inputName", className: "col-lg-2 control-label"}, "Name"), 
 					React.createElement("div", {className: "col-lg-10"}, 
-						React.createElement("input", {type: "text", className: "form-control", id: "inputEmail", placeholder: "Email"})
+						React.createElement("input", {type: "text", className: "form-control", id: "inputName", placeholder: "Full Name"})
 					)
 					), 
 					React.createElement("div", {className: "form-group"}, 
