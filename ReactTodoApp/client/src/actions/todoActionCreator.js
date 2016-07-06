@@ -2,17 +2,23 @@
 
 var Dispatcher = require('../dispatcher/Dispatcher');
 var ActionTypes = require('../constants/actionTypes');
-var todoApi = require('../mockApi/todoApi');
-
+var API = require("../helpers/api");
 
 var TodoActionCreator = {
 	createTodo: function (todo) {
-		var newTodo = todoApi.saveTodo(todo);
+		var newTodoPromise = API.createTodo(todo);
 
-		Dispatcher.dispatch({
-			actionType: ActionTypes.CREATE_TODO,
-			todo: newTodo
-		});
+		newTodoPromise
+			.then(function (newTodo) {
+				
+				Dispatcher.dispatch({
+					actionType: ActionTypes.CREATE_TODO,
+					todo: newTodo
+				});
+			})
+			.fail(function (xhr, status, err) {
+				console.log("Create Todo Fail")
+			});
 	}
 };
 

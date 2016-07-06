@@ -14,12 +14,23 @@ var TodoList = React.createClass({
 	},
 
 	render: function () {
+		var checkForTodos = function () {
+			if (this.props.todos.length > 0) {
+				return this.props.todos.map(createTodoRow, this);
+			} else {
+				return (
+					<tr><h5>You currently have no Todos!</h5></tr>
+				);
+			}
+		}.bind(this);
+			
+
 		var createTodoRow = function (todo) {
 			return (
-				<tr key={todo.id}>
+				<tr key={todo._id}>
 					<td>{todo.title}</td>
 					<td>{todo.description}</td>
-					<td><a href="#" onClick={this.deleteTodo.bind(this, todo.id)}>Delete</a></td>
+					<td><a href="#" onClick={this.deleteTodo.bind(this, todo._id)}>Delete</a></td>
 				</tr>
 			);
 		};
@@ -33,7 +44,7 @@ var TodoList = React.createClass({
 					</tr>
 				</thead>
 				<tbody>
-					{this.props.todos.map(createTodoRow, this)}
+					{checkForTodos()}
 				</tbody>
 			</table>
 		);
