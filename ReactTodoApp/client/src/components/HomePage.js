@@ -11,19 +11,19 @@ var Home = React.createClass({
 				<fieldset>
 					<legend>New Diagnostic Profile</legend>
 					<div className="form-group">
-					<label for="inputFName" className="col-lg-2 control-label">First Name</label>
+					<label htmlFor="inputFName" className="col-lg-2 control-label">First Name</label>
 					<div className="col-lg-10">
 						<input type="text" className="form-control" id="inputFName" placeholder="First Name" />
 					</div>
 					</div>
 					<div className="form-group">
-					<label for="inputLName" className="col-lg-2 control-label">Last Name</label>
+					<label htmlFor="inputLName" className="col-lg-2 control-label">Last Name</label>
 					<div className="col-lg-10">
 						<input type="text" className="form-control" id="inputLName" placeholder="Last Name" />
 					</div>
 					</div>
 					<div className="form-group">
-					<label for="select" className="col-lg-2 control-label">Diagnosis</label>
+					<label htmlFor="select" className="col-lg-2 control-label">Diagnosis</label>
 					<div className="col-lg-10">
 					<select multiple="" className="form-control">
 						<option>Anxiety</option>
@@ -41,10 +41,10 @@ var Home = React.createClass({
 						<option>Cognitive coping statements</option>
 						</select>
 						<br />
-					<div class="form-group">
-      					<label for="textArea" className="col-lg-2 control-label">Textarea</label>
-      					<div class="col-lg-10">
-       					 <textarea class="form-control" rows="3" id="textArea"></textarea>
+					<div className="form-group">
+      					<label htmlFor="textArea" className="col-lg-2 control-label">Textarea</label>
+      					<div className="col-lg-10">
+       					 <textarea className="form-control" rows="3" id="textArea"></textarea>
 						</div>
       				</div>
     				</div>

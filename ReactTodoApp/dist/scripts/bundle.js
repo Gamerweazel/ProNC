@@ -55,19 +55,19 @@ var Home = React.createClass({displayName: "Home",
 				React.createElement("fieldset", null, 
 					React.createElement("legend", null, "New Diagnostic Profile"), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "inputFName", className: "col-lg-2 control-label"}, "First Name"), 
+					React.createElement("label", {htmlFor: "inputFName", className: "col-lg-2 control-label"}, "First Name"), 
 					React.createElement("div", {className: "col-lg-10"}, 
 						React.createElement("input", {type: "text", className: "form-control", id: "inputFName", placeholder: "First Name"})
 					)
 					), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "inputLName", className: "col-lg-2 control-label"}, "Last Name"), 
+					React.createElement("label", {htmlFor: "inputLName", className: "col-lg-2 control-label"}, "Last Name"), 
 					React.createElement("div", {className: "col-lg-10"}, 
 						React.createElement("input", {type: "text", className: "form-control", id: "inputLName", placeholder: "Last Name"})
 					)
 					), 
 					React.createElement("div", {className: "form-group"}, 
-					React.createElement("label", {for: "select", className: "col-lg-2 control-label"}, "Diagnosis"), 
+					React.createElement("label", {htmlFor: "select", className: "col-lg-2 control-label"}, "Diagnosis"), 
 					React.createElement("div", {className: "col-lg-10"}, 
 					React.createElement("select", {multiple: "", className: "form-control"}, 
 						React.createElement("option", null, "Anxiety"), 
@@ -85,10 +85,10 @@ var Home = React.createClass({displayName: "Home",
 						React.createElement("option", null, "Cognitive coping statements")
 						), 
 						React.createElement("br", null), 
-					React.createElement("div", {class: "form-group"}, 
-      					React.createElement("label", {for: "textArea", className: "col-lg-2 control-label"}, "Textarea"), 
-      					React.createElement("div", {class: "col-lg-10"}, 
-       					 React.createElement("textarea", {class: "form-control", rows: "3", id: "textArea"})
+					React.createElement("div", {className: "form-group"}, 
+      					React.createElement("label", {htmlFor: "textArea", className: "col-lg-2 control-label"}, "Textarea"), 
+      					React.createElement("div", {className: "col-lg-10"}, 
+       					 React.createElement("textarea", {className: "form-control", rows: "3", id: "textArea"})
 						)
       				)
     				)
