@@ -4,7 +4,8 @@ var Dispatcher = require('../dispatcher/Dispatcher');
 var ActionTypes = require('../constants/actionTypes');
 var EventEmitter = require('events');
 var CHANGE_EVENT = 'change';
-
+var _ = require("lodash");
+var toastr = require("toastr");
 var _todos = [];
 
 var TodoStore = Object.assign({}, EventEmitter.prototype, {
@@ -23,6 +24,11 @@ var TodoStore = Object.assign({}, EventEmitter.prototype, {
 
 	getAllTodos: function () {
 		return _todos;
+	},
+
+	getTodoById: function (todoId) {
+		return _.find(_todos, {_id: todoId});
+		
 	}
 
 });
@@ -37,6 +43,12 @@ Dispatcher.register(function (action) {
 			// add the todo
 			_todos.push(action.todo);
 			TodoStore.emitChange();
+			toastr.success('Todo Created!');
+			break;
+		case ActionTypes.DELETE_TODO:
+			_.remove(_todos, {_id: action.todoId});		
+			TodoStore.emitChange();
+			toastr.error('Todo deleted!');
 			break;
 		default:
 			// do nothing

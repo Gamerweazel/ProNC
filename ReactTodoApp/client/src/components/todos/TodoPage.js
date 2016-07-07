@@ -5,7 +5,6 @@ var TodoList = require('./TodoList');
 var Link = require('react-router').Link;
 var TodoStore = require("../../stores/todoStore");
 
-
 var Todos = React.createClass({
 
 	getInitialState: function () {

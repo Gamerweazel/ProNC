@@ -19,6 +19,22 @@ var TodoActionCreator = {
 			.fail(function (xhr, status, err) {
 				console.log("Create Todo Fail")
 			});
+	},
+
+	deleteTodo: function (todo) {
+		var deleteTodoPromise = API.deleteTodo(todo);
+
+		deleteTodoPromise
+			.then(function () {
+
+				Dispatcher.dispatch({
+					actionType: ActionTypes.DELETE_TODO,
+					todoId: todo._id
+				});
+			})
+			.fail(function (xhr, status, err) {
+				console.log("Delete Todo Fail")
+			});
 	}
 };
 

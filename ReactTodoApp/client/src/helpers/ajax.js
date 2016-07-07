@@ -7,7 +7,7 @@ var ajax = function(url, data, type) {
     return $.ajax({
         url: "http://localhost:9005" + url,
         datatype: "json",
-        contentType: "applicationn/json",
+        contentType: "application/json",
         type: method,
         data: JSON.stringify(data)
     });

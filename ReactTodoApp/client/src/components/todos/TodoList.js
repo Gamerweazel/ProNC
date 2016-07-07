@@ -1,16 +1,20 @@
 'use strict';
 
 var React = require('react');
-var todoApi = require('../../mockApi/todoApi');
-var toastr = require('toastr');
-
+var Link = require("react-router").Link
+var TodoActionCreator = require("../../actions/todoActionCreator");
 
 var TodoList = React.createClass({
 
-	deleteTodo: function (todoId, event) {
+	deleteTodo: function (todo, event) {
 		event.preventDefault();
-		todoApi.deleteTodo(todoId);
-		toastr.success('Todo deleted!');
+		TodoActionCreator.deleteTodo(todo)
+	},
+
+	updateTodo: function(todo, event) {
+		todo.completed ? todo.completed = false : todo.completed = true;
+		event.preventDefault();
+		TodoActionCreator.updateTodo(todo);
 	},
 
 	render: function () {
@@ -28,9 +32,10 @@ var TodoList = React.createClass({
 		var createTodoRow = function (todo) {
 			return (
 				<tr key={todo._id}>
-					<td>{todo.title}</td>
+					<td><Link to={"/manage-todo/" + todo._id}>{todo.title}</Link></td>
 					<td>{todo.description}</td>
-					<td><a href="#" onClick={this.deleteTodo.bind(this, todo._id)}>Delete</a></td>
+					<td><a href="#" className="btn btn-primary btn-sm" onClick={this.updateTodo.bind(this, todo)}>Completed</a></td>
+					<td><a href="#" className="btn btn-danger btn-sm" onClick={this.deleteTodo.bind(this, todo)}>Delete</a></td>
 				</tr>
 			);
 		};
@@ -40,6 +45,7 @@ var TodoList = React.createClass({
 					<tr>
 						<th>Title</th>
 						<th>Description</th>
+						<th></th>
 						<th></th>
 					</tr>
 				</thead>
