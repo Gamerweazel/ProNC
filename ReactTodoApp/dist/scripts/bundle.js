@@ -217,7 +217,6 @@ var Header = React.createClass({displayName: "Header",
 });
 
 module.exports = Header;
-
 },{"react":253,"react-router":79}],7:[function(require,module,exports){
 'use strict';
 
@@ -313,9 +312,6 @@ var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 			TodoActionCreator.createTodo(this.state.todo);
 		}
 
-		TodoActionCreator.createTodo(this.state.todo);
-		// todoApi.saveTodo(this.state.todo);
-		
 		browserHistory.push('/todos-page');
 
 	},
@@ -358,7 +354,6 @@ var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 });
 
 module.exports = ManageTodoPage;
-
 },{"../../actions/todoActionCreator":2,"../../stores/todoStore":18,"./TodoForm":9,"react":253,"react-router":79}],9:[function(require,module,exports){
 'use strict';
 
@@ -455,7 +450,6 @@ var TodoList = React.createClass({displayName: "TodoList",
 });
 
 module.exports = TodoList;
-
 },{"../../actions/todoActionCreator":2,"react":253,"react-router":79}],11:[function(require,module,exports){
 'use strict';
 
@@ -500,7 +494,6 @@ var Todos = React.createClass({displayName: "Todos",
 });
 
 module.exports = Todos;
-
 },{"../../stores/todoStore":18,"./TodoList":10,"react":253,"react-router":79}],12:[function(require,module,exports){
 'use strict';
 
@@ -687,7 +680,6 @@ Dispatcher.register(function (action) {
 });
 
 module.exports = TodoStore;
-
 },{"../constants/actionTypes":12,"../dispatcher/Dispatcher":13,"events":22,"lodash":45,"toastr":255}],19:[function(require,module,exports){
 var pSlice = Array.prototype.slice;
 var objectKeys = require('./lib/keys.js');

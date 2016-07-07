@@ -57,9 +57,6 @@ var ManageTodoPage = React.createClass({
 			TodoActionCreator.createTodo(this.state.todo);
 		}
 
-		TodoActionCreator.createTodo(this.state.todo);
-		// todoApi.saveTodo(this.state.todo);
-		
 		browserHistory.push('/todos-page');
 
 	},
