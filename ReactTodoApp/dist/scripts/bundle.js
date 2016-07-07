@@ -61,6 +61,22 @@ var TodoActionCreator = {
 			.fail(function (xhr, status, err) {
 				console.log("Delete Todo Fail")
 			});
+	},
+
+	updateTodo: function (todo) {
+		var updateTodoPromise = API.updateTodo(todo);
+
+		updateTodoPromise
+			.then(function (updatedTodo) {
+
+				Dispatcher.dispatch({
+					actionType: ActionTypes.UPDATE_TODO,
+					todo: updatedTodo
+				});
+			})
+			.fail(function (xhr, status, err) {
+				console.log("Update Todo Fail")
+			});
 	}
 };
 
@@ -244,7 +260,7 @@ var React = require('react');
 var TodoForm = require('./TodoForm');
 var TodoActionCreator = require('../../actions/todoActionCreator');
 var browserHistory = require('react-router').browserHistory;
-
+var TodoStore = require("../../stores/todoStore");
 var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 
 	getInitialState: function () {
@@ -261,9 +277,13 @@ var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 	componentWillMount: function () {
 		var todoId = this.props.params.id;
 
-		this.setState({
-			todo: TodoStore.getTodoById(todoId)
-		});
+		if (todoId) {
+
+			this.setState({
+				todo: TodoStore.getTodoById(todoId)
+			});
+		}
+		
 	},
 
 	saveTodoState: function (event) {
@@ -285,6 +305,12 @@ var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 
 		if (!this.todoFormIsValid()) {
 			return;
+		}
+
+		if (this.state.todo._id) {
+			TodoActionCreator.updateTodo(this.state.todo);
+		} else {
+			TodoActionCreator.createTodo(this.state.todo);
 		}
 
 		TodoActionCreator.createTodo(this.state.todo);
@@ -333,7 +359,7 @@ var ManageTodoPage = React.createClass({displayName: "ManageTodoPage",
 
 module.exports = ManageTodoPage;
 
-},{"../../actions/todoActionCreator":2,"./TodoForm":9,"react":253,"react-router":79}],9:[function(require,module,exports){
+},{"../../actions/todoActionCreator":2,"../../stores/todoStore":18,"./TodoForm":9,"react":253,"react-router":79}],9:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -518,7 +544,8 @@ var ajax = require("./ajax.js");
 module.exports = {
     getAllTodos: getAllTodos,
     createTodo: createTodo,
-    deleteTodo: deleteTodo
+    deleteTodo: deleteTodo,
+    updateTodo: updateTodo
 }
 
 function getAllTodos() {
@@ -539,6 +566,13 @@ function deleteTodo(todo) {
     var url = "/todos/" + todo._id;
     var data = {};
     var type = "DELETE";
+    return ajax(url, data, type);
+}
+
+function updateTodo(todo) {
+    var url = "/todos/" + todo._id;
+    var data = todo;
+    var type = "PUT";
     return ajax(url, data, type);
 }
 
@@ -639,6 +673,13 @@ Dispatcher.register(function (action) {
 			_.remove(_todos, {_id: action.todoId});		
 			TodoStore.emitChange();
 			toastr.error('Todo deleted!');
+			break;
+		case ActionTypes.UPDATE_TODO:
+			var existingTodo = _.find(_todos, {_id: action.todo._id});
+			var existingIndex = _.indexOf(_todos, existingTodo);
+			_todos.splice(existingIndex, 1, action.todo);
+			TodoStore.emitChange();
+			toastr.info('Todo updated!');
 			break;
 		default:
 			// do nothing

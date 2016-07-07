@@ -35,6 +35,22 @@ var TodoActionCreator = {
 			.fail(function (xhr, status, err) {
 				console.log("Delete Todo Fail")
 			});
+	},
+
+	updateTodo: function (todo) {
+		var updateTodoPromise = API.updateTodo(todo);
+
+		updateTodoPromise
+			.then(function (updatedTodo) {
+
+				Dispatcher.dispatch({
+					actionType: ActionTypes.UPDATE_TODO,
+					todo: updatedTodo
+				});
+			})
+			.fail(function (xhr, status, err) {
+				console.log("Update Todo Fail")
+			});
 	}
 };
 

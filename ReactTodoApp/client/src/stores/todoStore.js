@@ -50,6 +50,13 @@ Dispatcher.register(function (action) {
 			TodoStore.emitChange();
 			toastr.error('Todo deleted!');
 			break;
+		case ActionTypes.UPDATE_TODO:
+			var existingTodo = _.find(_todos, {_id: action.todo._id});
+			var existingIndex = _.indexOf(_todos, existingTodo);
+			_todos.splice(existingIndex, 1, action.todo);
+			TodoStore.emitChange();
+			toastr.info('Todo updated!');
+			break;
 		default:
 			// do nothing
 	}

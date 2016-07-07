@@ -4,7 +4,7 @@ var React = require('react');
 var TodoForm = require('./TodoForm');
 var TodoActionCreator = require('../../actions/todoActionCreator');
 var browserHistory = require('react-router').browserHistory;
-
+var TodoStore = require("../../stores/todoStore");
 var ManageTodoPage = React.createClass({
 
 	getInitialState: function () {
@@ -21,9 +21,13 @@ var ManageTodoPage = React.createClass({
 	componentWillMount: function () {
 		var todoId = this.props.params.id;
 
-		this.setState({
-			todo: TodoStore.getTodoById(todoId)
-		});
+		if (todoId) {
+
+			this.setState({
+				todo: TodoStore.getTodoById(todoId)
+			});
+		}
+		
 	},
 
 	saveTodoState: function (event) {
@@ -45,6 +49,12 @@ var ManageTodoPage = React.createClass({
 
 		if (!this.todoFormIsValid()) {
 			return;
+		}
+
+		if (this.state.todo._id) {
+			TodoActionCreator.updateTodo(this.state.todo);
+		} else {
+			TodoActionCreator.createTodo(this.state.todo);
 		}
 
 		TodoActionCreator.createTodo(this.state.todo);
