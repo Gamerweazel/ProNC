@@ -406,33 +406,41 @@ var TodoList = React.createClass({displayName: "TodoList",
 	},
 
 	updateTodo: function(todo, event) {
-		todo.completed ? todo.completed = false : todo.completed = true;
 		event.preventDefault();
+		todo.completed ? todo.completed = false : todo.completed = true;
 		TodoActionCreator.updateTodo(todo);
 	},
 
 	render: function () {
-		var checkForTodos = function () {
-			if (this.props.todos.length > 0) {
-				return this.props.todos.map(createTodoRow, this);
-			} else {
-				return (
-					React.createElement("tr", null, React.createElement("h5", null, "You currently have no Todos!"))
-				);
-			}
-		}.bind(this);
+		var output;
 			
-
 		var createTodoRow = function (todo) {
+			var tdClass = "";
+			var isDone = "Mark as done";
+			var todoTitle = todo.title;
+			var todoDescription = todo.description;
+			if (todo.completed) {
+				tdClass = "todo-done";
+				isDone = "Mark as not done";
+				todoTitle = (React.createElement("s", null, todo.title));
+				todoDescription = (React.createElement("s", null, todo.description));
+			}
 			return (
 				React.createElement("tr", {key: todo._id}, 
-					React.createElement("td", null, React.createElement(Link, {to: "/manage-todo/" + todo._id}, todo.title)), 
-					React.createElement("td", null, todo.description), 
-					React.createElement("td", null, React.createElement("a", {href: "#", className: "btn btn-primary btn-sm", onClick: this.updateTodo.bind(this, todo)}, "Completed")), 
+					React.createElement("td", {className: tdClass}, React.createElement(Link, {to: "/manage-todo/" + todo._id}, todoTitle)), 
+					React.createElement("td", {className: tdClass}, todoDescription), 
+					React.createElement("td", null, React.createElement("a", {href: "#", className: "btn btn-primary btn-sm", onClick: this.updateTodo.bind(this, todo)}, isDone)), 
 					React.createElement("td", null, React.createElement("a", {href: "#", className: "btn btn-danger btn-sm", onClick: this.deleteTodo.bind(this, todo)}, "Delete"))
 				)
 			);
 		};
+
+		if (this.props.todos.length > 0) {
+			output = this.props.todos.map(createTodoRow, this);
+		} else {
+			output = (React.createElement("tr", null, React.createElement("h5", null, "You have no Todos!")));
+		}
+		
 		return (
 			React.createElement("table", {className: "table"}, 
 				React.createElement("thead", null, 
@@ -444,7 +452,7 @@ var TodoList = React.createClass({displayName: "TodoList",
 					)
 				), 
 				React.createElement("tbody", null, 
-					checkForTodos()
+					output
 				)
 			)
 		);

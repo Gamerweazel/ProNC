@@ -12,33 +12,41 @@ var TodoList = React.createClass({
 	},
 
 	updateTodo: function(todo, event) {
-		todo.completed ? todo.completed = false : todo.completed = true;
 		event.preventDefault();
+		todo.completed ? todo.completed = false : todo.completed = true;
 		TodoActionCreator.updateTodo(todo);
 	},
 
 	render: function () {
-		var checkForTodos = function () {
-			if (this.props.todos.length > 0) {
-				return this.props.todos.map(createTodoRow, this);
-			} else {
-				return (
-					<tr><h5>You currently have no Todos!</h5></tr>
-				);
-			}
-		}.bind(this);
+		var output;
 			
-
 		var createTodoRow = function (todo) {
+			var tdClass = "";
+			var isDone = "Mark as done";
+			var todoTitle = todo.title;
+			var todoDescription = todo.description;
+			if (todo.completed) {
+				tdClass = "todo-done";
+				isDone = "Mark as not done";
+				todoTitle = (<s>{todo.title}</s>);
+				todoDescription = (<s>{todo.description}</s>);
+			}
 			return (
 				<tr key={todo._id}>
-					<td><Link to={"/manage-todo/" + todo._id}>{todo.title}</Link></td>
-					<td>{todo.description}</td>
-					<td><a href="#" className="btn btn-primary btn-sm" onClick={this.updateTodo.bind(this, todo)}>Completed</a></td>
+					<td className={tdClass}><Link to={"/manage-todo/" + todo._id}>{todoTitle}</Link></td>
+					<td className={tdClass}>{todoDescription}</td>
+					<td><a href="#" className="btn btn-primary btn-sm" onClick={this.updateTodo.bind(this, todo)}>{isDone}</a></td>
 					<td><a href="#" className="btn btn-danger btn-sm" onClick={this.deleteTodo.bind(this, todo)}>Delete</a></td>
 				</tr>
 			);
 		};
+
+		if (this.props.todos.length > 0) {
+			output = this.props.todos.map(createTodoRow, this);
+		} else {
+			output = (<tr><h5>You have no Todos!</h5></tr>);
+		}
+		
 		return (
 			<table className="table">
 				<thead>
@@ -50,7 +58,7 @@ var TodoList = React.createClass({
 					</tr>
 				</thead>
 				<tbody>
-					{checkForTodos()}
+					{output}
 				</tbody>
 			</table>
 		);
