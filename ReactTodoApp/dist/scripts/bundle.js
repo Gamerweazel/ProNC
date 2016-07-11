@@ -321,7 +321,6 @@ module.exports = ManageTodoPage;
 var React = require('react');
 var TextInput = require('../common/TextInput');
 
-
 var TodoForm = React.createClass({displayName: "TodoForm",
 	render: function () {
 		console.log(this.props.errors);

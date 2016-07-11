@@ -10,8 +10,6 @@ var skipper = require('skipper')
 var colors = require("colors")
 var path = require("path")
 var Strategy = require('passport-facebook').Strategy
-var pushState = require('connect-pushstate')
-
 
 // Configure Mongoose
 
@@ -24,6 +22,7 @@ mongoose.connection.on("error", function(err) {
 })
 
 // Configure Passport
+
 var User = require("./server/user/model")
 passport.use(new Strategy({
     clientID: "580031238842887",
@@ -76,7 +75,9 @@ app.use(session({ secret: 'keyboard cat',
                   resave: true, 
                   saveUninitialized: true,
                   cookie: {
-                    maxAge: 3600000
+                    maxAge: 3600000,
+                    httpOnly: true,
+                    secure: true
                   },
                   store: new MongoStore(
                 {mongooseConnection:mongoose.connection})
@@ -89,8 +90,7 @@ app.use(passport.session())
 
 // Routes
 
-// app.get('/', function (req, res)
-// {
+// app.get('/', function (req, res) {
 // 	res.sendFile(path.join(__dirname, "/dist/index.html"));
 // })
 
@@ -105,13 +105,11 @@ app.get('/logout', function(req, res){
 });                                      
 
 app.get('/todos', ensure.ensureLoggedIn(), controller.index)
-app.post('/todos', controller.create)
+app.post('/todos', ensure.ensureLoggedIn(), controller.create)
 
 app.get('/todos/:id', controller.show)
 app.put('/todos/:id', controller.update)
 app.delete('/todos/:id', controller.delete)
-
-
 
 // Listening
 
